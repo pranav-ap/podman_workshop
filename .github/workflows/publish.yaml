@@ -1,9 +1,9 @@
 name: Publish Python Package via uv
 
-on:
-  push:
-    tags:
-      - 'v*.*.*'  # Trigger on version tags like v0.1.0
+# on:
+#   push:
+#     tags:
+#       - 'v*.*.*'  # Trigger on version tags like v0.1.0
 
 jobs:
   build-and-publish:

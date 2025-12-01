@@ -23,6 +23,7 @@ RUN adduser -D docker
 USER docker
 
 # COPY <path on host> <path in container image>
+COPY README.md .
 COPY pyproject.toml .
 COPY uv.lock .
 COPY src ./src
