@@ -7,9 +7,6 @@ USER root
 # This sets the default working directory when a container is launched from the image
 WORKDIR /home/docker
 
-# COPY <path on host> <path in container image>
-COPY /app . 
-
 # Install system dependencies
 RUN apk update && \
     apk add --no-cache \
@@ -20,13 +17,17 @@ RUN apk update && \
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-RUN uv init && \
-    uv add scikit-learn
-
 # Create docker user
 RUN adduser -D docker
 # Run as docker user by default when the container starts up
 USER docker
+
+# COPY <path on host> <path in container image>
+COPY pyproject.toml .
+COPY uv.lock .
+COPY src ./src
+
+RUN uv add scikit-learn
 
 # only exists during build time 
 ARG VERSION=0.1.0
@@ -41,12 +42,12 @@ EXPOSE 8000
 # Can override it in run command
 
 # CMD ["bash"]
-CMD ["uv", "run", "main.py"]
+CMD ["uv", "run", "src/main.py"]
 
 # ENTRYPOINT defines a command thats always run on container start
 # If ENTRYPOINT is present then CMD provides inputs to the ENTRYPOINT
 # Can override these arguments in run command 
 
 # ENTRYPOINT ["uv", "run"]
-# CMD ["main.py"]
+# CMD ["src/main.py"]
 
