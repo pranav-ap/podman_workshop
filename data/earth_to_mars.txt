@@ -1,0 +1,2 @@
+This was written on local host
+This was written inside the container
