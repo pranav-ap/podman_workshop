@@ -42,12 +42,12 @@ EXPOSE 8000
 # Can override it in run command
 
 # CMD ["bash"]
-CMD ["uv", "run", "src/main.py"]
+CMD ["uv", "run", "src/holymeow/main.py"]
 
 # ENTRYPOINT defines a command thats always run on container start
 # If ENTRYPOINT is present then CMD provides inputs to the ENTRYPOINT
 # Can override these arguments in run command 
 
 # ENTRYPOINT ["uv", "run"]
-# CMD ["src/main.py"]
+# CMD ["src/holymeow/main.py"]
 
