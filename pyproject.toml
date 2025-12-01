@@ -12,8 +12,10 @@ dependencies = [
     "scikit-learn>=1.7.2",
 ]
 
-[project.scripts]
-hellomeow = "hellomeow:main"
+[dependency-groups]
+dev = [
+    "pytest>=9.0.1",
+]
 
 [build-system]
 requires = ["hatchling"]
